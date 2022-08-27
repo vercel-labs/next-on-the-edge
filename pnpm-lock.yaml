@@ -7,12 +7,12 @@ specifiers:
   '@next/swc-win32-x64-msvc': canary
   eslint: 8.18.0
   eslint-config-next: 12.2.0
-  next: file:./next-12.2.6-canary.5.tgz
+  next: file:./next-12.2.6-nightly.0.tgz
   react: 18.2.0
   react-dom: 18.2.0
 
 dependencies:
-  next: file:next-12.2.6-canary.5.tgz_biqbaboplfbrettd7655fr4n2y
+  next: file:next-12.2.6-nightly.0.tgz_biqbaboplfbrettd7655fr4n2y
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
 
@@ -1702,9 +1702,9 @@ packages:
     resolution: {integrity: sha512-3wdGidZyq5PB084XLES5TpOSRA3wjXAlIWMhum2kRcv/41Sn2emQ0dycQW4uZXLejwKvg6EsvbdlVL+FYEct7A==}
     dev: true
 
-  file:next-12.2.6-canary.5.tgz_biqbaboplfbrettd7655fr4n2y:
-    resolution: {integrity: sha512-sAkVukmIH0WCc7nqsJyGfhr4RvjafZLk1I3zkVk7ZQ7fvrso2KtqFwTzB/FDRRZqzrNLLXlC5aiNnCWu++fP/A==, tarball: file:next-12.2.6-canary.5.tgz}
-    id: file:next-12.2.6-canary.5.tgz
+  file:next-12.2.6-nightly.0.tgz_biqbaboplfbrettd7655fr4n2y:
+    resolution: {integrity: sha512-k2NORUd56em9EPrckvmb00XdccblIcBXIo8HCvpNDa/gliZgy0BtZ3XJZ0O4Pyqfm2UtLe4g9s8apDi0Z6YxYw==, tarball: file:next-12.2.6-nightly.0.tgz}
+    id: file:next-12.2.6-nightly.0.tgz
     name: next
     version: 12.2.6-canary.5
     engines: {node: '>=12.22.0'}

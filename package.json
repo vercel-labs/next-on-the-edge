@@ -9,7 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "next": "file:./next-12.2.6-canary.5.tgz",
+    "next": "file:./next-12.2.6-nightly.0.tgz",
     "react": "18.2.0",
     "react-dom": "18.2.0"
   },
