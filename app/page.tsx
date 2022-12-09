@@ -262,7 +262,7 @@ function Card() {
             className="orbit"
             style={{
               stroke: 'url(#gradient-1)',
-              animationDelay: 0,
+              animationDelay: '0',
             }}
             r={53.4}
           />
