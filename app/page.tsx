@@ -1,32 +1,17 @@
-export const config = {
-  runtime: "experimental-edge",
-};
+import { headers } from 'next/headers';
 
-export function getServerSideProps({ req }) {
-  const parsedCity = decodeURIComponent(
-    req.headers["x-vercel-ip-city"] ?? "null"
-  );
-  const city = parsedCity === "null" ? null : parsedCity;
-  const ip = (req.headers["x-forwarded-for"] ?? "127.0.0.1").split(",")[0];
-  const wasCold = isCold;
-  isCold = false;
+export const runtime = 'experimental-edge';
 
-  return {
-    props: {
-      date: new Date().toISOString(),
-      isCold: wasCold,
-      city,
-      ip,
-    },
-  };
-}
+export default function Page() {
+  const headersList = headers();
+  const city = headersList.get('x-vercel-ip-city');
+  const forwardedFor = headersList.get('x-forwarded-for');
+  const ip = (forwardedFor ?? '127.0.0.1').split(',')[0];
+  const date = new Date().toISOString();
 
-let isCold = true;
-
-export default function Home({ date, city, ip, isCold }) {
   return (
     <>
-      <div style={{ height: "100%" }}>
+      <div style={{ height: '100%' }}>
         <Card />
 
         <main>
@@ -41,12 +26,12 @@ export default function Home({ date, city, ip, isCold }) {
                 <strong
                   title={
                     city === null
-                      ? "GeoIP information could not be derived from your IP"
+                      ? 'GeoIP information could not be derived from your IP'
                       : null
                   }
-                  className={city === null ? "na" : null}
+                  className={city === null ? 'na' : null}
                 >
-                  {city === null ? "N/A" : city}
+                  {city === null ? 'N/A' : city}
                 </strong>
               </div>
             </div>
@@ -59,9 +44,7 @@ export default function Home({ date, city, ip, isCold }) {
             </div>
           </div>
         </main>
-        <div className="debug">
-          Generated at {date} ({isCold ? "cold" : "hot"})
-        </div>
+        <div className="debug">Generated at {date}</div>
       </div>
 
       <Footer />
@@ -206,19 +189,19 @@ function Card() {
           <stop
             offset={0.3}
             style={{
-              stopColor: "var(--g1)",
+              stopColor: 'var(--g1)',
             }}
           />
           <stop
             offset={0.5}
             style={{
-              stopColor: "var(--g2)",
+              stopColor: 'var(--g2)',
             }}
           />
           <stop
             offset={0.8}
             style={{
-              stopColor: "var(--g1)",
+              stopColor: 'var(--g1)',
             }}
           />
         </linearGradient>
@@ -233,19 +216,19 @@ function Card() {
           <stop
             offset={0.3}
             style={{
-              stopColor: "var(--nextjs)",
+              stopColor: 'var(--nextjs)',
             }}
           />
           <stop
             offset={0.5}
             style={{
-              stopColor: "#BBF0FF",
+              stopColor: '#BBF0FF',
             }}
           />
           <stop
             offset={0.8}
             style={{
-              stopColor: "var(--nextjs)",
+              stopColor: 'var(--nextjs)',
             }}
           />
         </linearGradient>
@@ -253,7 +236,7 @@ function Card() {
           <path
             fill="var(--fg)"
             style={{
-              fill: "url(#gradient-vercel)",
+              fill: 'url(#gradient-vercel)',
             }}
             d="M478.5.6c-2.2.2-9.2.9-15.5 1.4C317.7 15.1 181.6 93.5 95.4 214c-48 67-78.7 143-90.3 223.5C1 465.6.5 473.9.5 512s.5 46.4 4.6 74.5C32.9 778.6 169.6 940 355 999.8c33.2 10.7 68.2 18 108 22.4 15.5 1.7 82.5 1.7 98 0 68.7-7.6 126.9-24.6 184.3-53.9 8.8-4.5 10.5-5.7 9.3-6.7-.8-.6-38.3-50.9-83.3-111.7l-81.8-110.5L487 587.7c-56.4-83.4-102.8-151.6-103.2-151.6-.4-.1-.8 67.3-1 149.6-.3 144.1-.4 149.9-2.2 153.3-2.6 4.9-4.6 6.9-8.8 9.1-3.2 1.6-6 1.9-21.1 1.9h-17.3l-4.6-2.9c-3-1.9-5.2-4.4-6.7-7.3l-2.1-4.5.2-200.5.3-200.6 3.1-3.9c1.6-2.1 5-4.8 7.4-6.1 4.1-2 5.7-2.2 23-2.2 20.4 0 23.8.8 29.1 6.6 1.5 1.6 57 85.2 123.4 185.9s157.2 238.2 201.8 305.7l81 122.7 4.1-2.7c36.3-23.6 74.7-57.2 105.1-92.2 64.7-74.3 106.4-164.9 120.4-261.5 4.1-28.1 4.6-36.4 4.6-74.5s-.5-46.4-4.6-74.5C991.1 245.4 854.4 84 669 24.2 636.3 13.6 601.5 6.3 562.5 1.9c-9.6-1-75.7-2.1-84-1.3zM687.9 310c4.8 2.4 8.7 7 10.1 11.8.8 2.6 1 58.2.8 183.5l-.3 179.8-31.7-48.6-31.8-48.6V457.2c0-84.5.4-132 1-134.3 1.6-5.6 5.1-10 9.9-12.6 4.1-2.1 5.6-2.3 21.3-2.3 14.8 0 17.4.2 20.7 2z"
           />
@@ -278,7 +261,7 @@ function Card() {
           <circle
             className="orbit"
             style={{
-              stroke: "url(#gradient-1)",
+              stroke: 'url(#gradient-1)',
               animationDelay: 0,
             }}
             r={53.4}
@@ -288,15 +271,15 @@ function Card() {
           <circle
             className="orbit"
             style={{
-              stroke: "url(#gradient-2)",
-              animationDelay: "0.03s",
+              stroke: 'url(#gradient-2)',
+              animationDelay: '0.03s',
             }}
             r={103.4}
           />
           <circle
             className="gray satellite"
             style={{
-              animationDelay: "0.9s",
+              animationDelay: '0.9s',
             }}
             cx={-69.6}
             cy={-76}
@@ -307,15 +290,15 @@ function Card() {
           <circle
             className="orbit"
             style={{
-              stroke: "url(#gradient-3)",
-              animationDelay: "0.06s",
+              stroke: 'url(#gradient-3)',
+              animationDelay: '0.06s',
             }}
             r={160.4}
           />
           <circle
             className="orange satellite"
             style={{
-              animationDelay: "0.8s",
+              animationDelay: '0.8s',
             }}
             cx={102.4}
             cy={-123}
@@ -326,15 +309,15 @@ function Card() {
           <circle
             className="orbit"
             style={{
-              stroke: "url(#gradient-4)",
-              animationDelay: "0.09s",
+              stroke: 'url(#gradient-4)',
+              animationDelay: '0.09s',
             }}
             r={267.3}
           />
           <circle
             className="orange satellite"
             style={{
-              animationDelay: "0.6s",
+              animationDelay: '0.6s',
             }}
             cx={-243.6}
             cy={111.4}
@@ -343,7 +326,7 @@ function Card() {
           <circle
             className="gray satellite"
             style={{
-              animationDelay: "1s",
+              animationDelay: '1s',
             }}
             cx={250}
             cy={94.4}
@@ -352,7 +335,7 @@ function Card() {
           <circle
             className="orange satellite"
             style={{
-              animationDelay: "0.7s",
+              animationDelay: '0.7s',
             }}
             cx={-236.6}
             cy={-123.6}
@@ -363,8 +346,8 @@ function Card() {
           <circle
             className="orbit"
             style={{
-              stroke: "url(#gradient-5)",
-              animationDelay: "0.12s",
+              stroke: 'url(#gradient-5)',
+              animationDelay: '0.12s',
             }}
             r={388.5}
           />
@@ -374,7 +357,7 @@ function Card() {
         id="vercel-logo"
         d="m336.4 261-46.2-80-46.2 80h92.4z"
         style={{
-          fill: "url(#gradient-vercel)",
+          fill: 'url(#gradient-vercel)',
         }}
       />
       <g id="center">
@@ -382,10 +365,10 @@ function Card() {
           d="M420 202 v36 M 402 220h36"
           style={{
             strokeWidth: 3.5625,
-            strokeLinecap: "round",
-            strokeLinejoin: "round",
-            stroke: "#999",
-            fill: "none",
+            strokeLinecap: 'round',
+            strokeLinejoin: 'round',
+            stroke: '#999',
+            fill: 'none',
           }}
         />
       </g>
@@ -418,11 +401,11 @@ function Footer() {
       </p>
 
       <p className="details">
-        Built with{" "}
+        Built with{' '}
         <a target="_blank" rel="noreferrer" href="https://nextjs.org">
           Next.js
-        </a>{" "}
-        on{" "}
+        </a>{' '}
+        on{' '}
         <a target="_blank" rel="noreferrer" href="https://vercel.com">
           Vercel
         </a>
@@ -431,7 +414,7 @@ function Footer() {
       <a
         target="_blank"
         rel="noreferrer"
-        href="https://github.com/vercel-labs/nextjs-on-the-edge"
+        href="https://github.com/vercel-labs/next-on-the-edge"
         className="source"
       >
         <svg

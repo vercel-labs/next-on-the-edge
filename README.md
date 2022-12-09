@@ -1,11 +1,15 @@
-## next-on-the-edge
+## Next.js on the Edge
 
-In the spirit of [sveltekit-on-the-edge](https://github.com/Rich-Harris/sveltekit-on-the-edge) and [react-on-the-edge](https://github.com/vercel/react-on-the-edge),
-this project uses the experimental [Edge SSR](https://nextjs.org/blog/next-12-2#edge-server-rendering-experimental) in [Next.js 12.2+](https://nextjs.org/blog/next-12-2) to
-render a page just in time.
+This is a demo of [Next.js](https://nextjs.org) using the Edge Runtime.
+
+This template uses the new `app` directory in Next.js 13 (beta). This includes support for enhanced layouts, colocation of components, tests, and styles, component-level data fetching, and more.
 
 ## How it works
 
-`pages/index.js` implements [`runtime: "experimental-edge"`](https://github.com/vercel/next-on-the-edge/blob/main/pages/index.js).
+The index route `/` uses the Edge Runtime through:
 
-City and IP are read from `getServerSideProps`. That's it!
+```js
+export const runtime = 'experimental-edge';
+```
+
+[Learn more](https://beta.nextjs.org/docs/rendering/edge-and-nodejs-runtimes).
