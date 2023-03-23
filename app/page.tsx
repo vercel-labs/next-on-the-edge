@@ -4,7 +4,7 @@ export const runtime = 'experimental-edge';
 
 export default function Page() {
   const headersList = headers();
-  const city = headersList.get('x-vercel-ip-city');
+  const city = decodeURI(headersList.get('x-vercel-ip-city'));
   const forwardedFor = headersList.get('x-forwarded-for');
   const ip = (forwardedFor ?? '127.0.0.1').split(',')[0];
   const date = new Date().toISOString();
