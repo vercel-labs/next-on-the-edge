@@ -39,6 +39,7 @@ export default function Page() {
           <div className="info">
             <span>Proxy Region</span>
             <Suspense fallback={<strong>Loading...</strong>}>
+              {/* @ts-expect-error Async Server Component */}
               <Delay ms={1000}>
                 <Region region={proxyRegion} />
               </Delay>
@@ -47,6 +48,7 @@ export default function Page() {
           <div className="info">
             <span>Compute Region</span>
             <Suspense fallback={<strong>Loading...</strong>}>
+              {/* @ts-expect-error Async Server Component */}
               <Delay ms={1500}>
                 <Region region={computeRegion} />
               </Delay>
