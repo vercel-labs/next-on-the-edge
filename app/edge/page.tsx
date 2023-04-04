@@ -1,27 +1,12 @@
-import { Suspense } from 'react';
 import { headers } from 'next/headers';
-import { Footer } from './components/footer';
-import { Region } from './components/region';
-import { Illustration } from './components/illustration';
-import { parseVercelId } from './parse-vercel-id';
+import { Footer } from '../components/footer';
+import { Region } from '../components/region';
+import { Illustration } from '../components/illustration';
+import { parseVercelId } from '../parse-vercel-id';
 
 export const runtime = 'edge';
+
 let isCold = true;
-
-function sleep(ms: number) {
-  return new Promise((resolve) => setTimeout(() => resolve(''), ms));
-}
-
-async function Delay({
-  children,
-  ms,
-}: {
-  children: React.ReactNode;
-  ms: number;
-}) {
-  await sleep(ms);
-  return children;
-}
 
 export default function Page() {
   const headersList = headers();
@@ -38,19 +23,11 @@ export default function Page() {
         <div className="meta">
           <div className="info">
             <span>Proxy Region</span>
-            <Suspense fallback={<strong>Loading...</strong>}>
-              <Delay ms={1000}>
-                <Region region={proxyRegion} />
-              </Delay>
-            </Suspense>
+            <Region region={proxyRegion} />
           </div>
           <div className="info">
             <span>Compute Region</span>
-            <Suspense fallback={<strong>Loading...</strong>}>
-              <Delay ms={1500}>
-                <Region region={computeRegion} />
-              </Delay>
-            </Suspense>
+            <Region region={computeRegion} />
           </div>
         </div>
       </main>
