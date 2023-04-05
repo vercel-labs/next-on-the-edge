@@ -6,7 +6,6 @@ import { Illustration } from './components/illustration';
 import { parseVercelId } from './parse-vercel-id';
 
 export const runtime = 'edge';
-let isCold = true;
 
 function sleep(ms: number) {
   return new Promise((resolve) => setTimeout(() => resolve(''), ms));
@@ -29,7 +28,6 @@ export default function Page() {
     headersList.get('x-vercel-id')
   );
   const date = new Date().toISOString();
-  isCold = false;
 
   return (
     <>
@@ -59,7 +57,7 @@ export default function Page() {
 
       <Footer>
         <p>
-          Generated at {date} <span data-break /> ({isCold ? 'cold' : 'hot'}) by{' '}
+          Generated at {date} by{' '}
           <a
             href="https://vercel.com/docs/concepts/functions/edge-functions"
             target="_blank"

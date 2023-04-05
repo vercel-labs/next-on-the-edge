@@ -4,7 +4,6 @@ import { Region } from '../components/region';
 import { Illustration } from '../components/illustration';
 
 export const runtime = 'nodejs';
-let isCold = true;
 
 function sleep(ms: number) {
   return new Promise((resolve) => setTimeout(() => resolve(''), ms));
@@ -30,7 +29,6 @@ export default function Page() {
   }
 
   const date = new Date().toISOString();
-  isCold = false;
 
   return (
     <>
@@ -63,7 +61,7 @@ export default function Page() {
 
       <Footer>
         <p>
-          Generated at {date} <span data-break /> ({isCold ? 'cold' : 'hot'}) by{' '}
+          Generated at {date} by{' '}
           <a
             href="https://vercel.com/docs/concepts/functions/serverless-functions"
             target="_blank"
