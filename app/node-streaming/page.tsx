@@ -3,8 +3,6 @@ import { Footer } from '../components/footer';
 import { Region } from '../components/region';
 import { Illustration } from '../components/illustration';
 
-export const runtime = 'nodejs';
-
 function sleep(ms: number) {
   return new Promise((resolve) => setTimeout(() => resolve(''), ms));
 }
@@ -20,14 +18,14 @@ async function Delay({
   return children;
 }
 
-export default function Page() {
-  // `process.versions.node` only exists in the Node.js runtime, naturally
-  const version: string = process.versions.node;
-  const region = process.env.VERCEL_REGION;
-  if (!region) {
-    throw new Error('`VERCEL_REGION` is not defined');
-  }
+// `process.versions.node` only exists in the Node.js runtime, naturally
+const version: string = process.versions.node;
+const region = process.env.VERCEL_REGION;
+if (!region) {
+  throw new Error('`VERCEL_REGION` is not defined');
+}
 
+export default function Page() {
   const date = new Date().toISOString();
 
   return (
