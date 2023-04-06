@@ -5,11 +5,10 @@ import { Illustration } from '../components/illustration';
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
 
-// `process.versions.node` only exists in the Node.js runtime, naturally
-const version: string = process.versions.node;
-const region = process.env.VERCEL_REGION;
-
 export default function Page() {
+  // `process.versions.node` only exists in the Node.js runtime, naturally
+  const version: string = process.versions.node;
+  const region = process.env.VERCEL_REGION;
   const date = new Date().toISOString();
 
   return (
