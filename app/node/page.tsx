@@ -3,6 +3,7 @@ import { Region } from '../components/region';
 import { Illustration } from '../components/illustration';
 
 export const runtime = 'nodejs';
+export const dynamic = 'force-dynamic';
 
 // `process.versions.node` only exists in the Node.js runtime, naturally
 const version: string = process.versions.node;

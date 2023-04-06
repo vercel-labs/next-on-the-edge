@@ -18,6 +18,9 @@ async function Delay({
   return children;
 }
 
+export const runtime = 'nodejs';
+export const dynamic = 'force-dynamic';
+
 // `process.versions.node` only exists in the Node.js runtime, naturally
 const version: string = process.versions.node;
 const region = process.env.VERCEL_REGION;
