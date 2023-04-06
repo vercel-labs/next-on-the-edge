@@ -21,10 +21,16 @@ async function Delay({
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
 
-export default function Page() {
+async function getNodeData() {
   // `process.versions.node` only exists in the Node.js runtime, naturally
   const version: string = process.versions.node;
   const region = process.env.VERCEL_REGION;
+
+  return { version, region };
+}
+
+export default async function Page() {
+  const { version, region } = await getNodeData();
   const date = new Date().toISOString();
 
   return (
