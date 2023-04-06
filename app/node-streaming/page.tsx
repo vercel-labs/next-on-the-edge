@@ -21,9 +21,6 @@ async function Delay({
 // `process.versions.node` only exists in the Node.js runtime, naturally
 const version: string = process.versions.node;
 const region = process.env.VERCEL_REGION;
-if (!region) {
-  throw new Error('`VERCEL_REGION` is not defined');
-}
 
 export default function Page() {
   const date = new Date().toISOString();
