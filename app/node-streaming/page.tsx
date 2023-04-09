@@ -89,7 +89,7 @@ function Nodejs(props: React.HTMLAttributes<HTMLOrSVGElement>) {
       {...props}
     >
       <mask
-        id="a"
+        id="abc"
         style={{
           maskType: 'luminance',
         }}
@@ -104,7 +104,7 @@ function Nodejs(props: React.HTMLAttributes<HTMLOrSVGElement>) {
           fill="#fff"
         />
       </mask>
-      <g mask="url(#a)">
+      <g mask="url(#abc)">
         <path
           d="M183.409 28.37L25.123-49.218l-81.16 165.565 158.283 77.59 81.163-165.569z"
           fill="url(#paint0_linear_0_1)"
