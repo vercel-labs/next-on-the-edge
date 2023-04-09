@@ -61,17 +61,23 @@ export default function NavigationSwitcher() {
     );
   });
   return (
-    <nav
-      style={
-        activeSection
-          ? {
-              ['--x' as string]: activeSection.x,
-            }
-          : undefined
-      }
-    >
-      <div aria-hidden className="nav-stroke" />
-      <div className="nav-switcher">{buttons}</div>
-    </nav>
+    <>
+      <nav
+        style={
+          activeSection
+            ? {
+                ['--x' as string]: activeSection.x,
+              }
+            : undefined
+        }
+      >
+        <div aria-hidden className="nav-stroke" />
+        <div className="nav-switcher">{buttons}</div>
+      </nav>
+      <p className="note">
+        Note: This demo simulates a slow network connection to demonstrate
+        streaming.
+      </p>
+    </>
   );
 }
