@@ -60,6 +60,12 @@ export function Illustration() {
           strokeWidth={1.16501}
         />
         <circle
+          style={
+            {
+              '--circle-opacity': 1,
+            } as React.CSSProperties
+          }
+          className="orbit"
           cx={146.533}
           cy={500.319}
           r={5.65757}
@@ -69,6 +75,12 @@ export function Illustration() {
           strokeWidth={1.5}
         />
         <circle
+          style={
+            {
+              '--circle-opacity': 1,
+            } as React.CSSProperties
+          }
+          className="orbit"
           cx={153.533}
           cy={265.319}
           r={5.65757}
@@ -78,6 +90,12 @@ export function Illustration() {
           strokeWidth={1.5}
         />
         <circle
+          style={
+            {
+              '--circle-opacity': 1,
+            } as React.CSSProperties
+          }
+          className="orbit"
           cx={320.533}
           cy={311.319}
           r={5.65757}
@@ -87,6 +105,12 @@ export function Illustration() {
           strokeWidth={1.5}
         />
         <circle
+          style={
+            {
+              '--circle-opacity': 1,
+            } as React.CSSProperties
+          }
+          className="orbit"
           cx={492.533}
           cy={265.319}
           r={5.65757}
@@ -96,6 +120,12 @@ export function Illustration() {
           strokeWidth={1.5}
         />
         <circle
+          style={
+            {
+              '--circle-opacity': 1,
+            } as React.CSSProperties
+          }
+          className="orbit"
           cx={641.533}
           cy={483.319}
           r={5.82506}
