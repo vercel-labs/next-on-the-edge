@@ -46,7 +46,7 @@ export default async function Page() {
             </span>
             <Suspense fallback={<strong>Loading...</strong>}>
               {/* @ts-expect-error Async Server Component */}
-              <Delay ms={1000}>
+              <Delay ms={50}>
                 <strong>
                   <NodeVersion />
                 </strong>
@@ -58,12 +58,12 @@ export default async function Page() {
             <Suspense
               fallback={
                 <span className="region">
-                  <strong>Loading</strong>
+                  <strong>Artificially delayed</strong>
                 </span>
               }
             >
               {/* @ts-expect-error Async Server Component */}
-              <Delay ms={1500}>
+              <Delay ms={3000}>
                 <Region region={getRegion()} />
               </Delay>
             </Suspense>
