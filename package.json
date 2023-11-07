@@ -9,7 +9,7 @@
   "dependencies": {
     "clsx": "^1.2.1",
     "framer-motion": "^10.11.2",
-    "next": "14.0.2-canary.18",
+    "next": "https://s3.us-west-001.backblazeb2.com/wyattjoh-vercel/next-14.0.2-canary.18.tgz?ts=1699386121",
     "react": "18.2.0",
     "react-dom": "18.2.0"
   },
