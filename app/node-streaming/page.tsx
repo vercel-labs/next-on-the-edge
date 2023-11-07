@@ -26,7 +26,16 @@ function DynamicDate() {
 }
 
 function NodeVersion() {
-  return <>{process.versions.node}</>;
+  let longString = "";
+  for (let i = 0; i < 33000; i++) {
+    longString += "a";
+  }
+  return (
+    <>
+      {process.versions.node}
+      <span style={{ display: "none" }}>{longString}</span>
+    </>
+  );
 }
 
 function getRegion() {
