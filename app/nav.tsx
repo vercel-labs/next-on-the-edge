@@ -8,7 +8,7 @@ import clsx from "clsx";
 const SECTION_DATA = [
   { label: "Edge (Streaming)", href: "/", x: "100%" },
   { label: "Edge", href: "/edge", x: "62%" },
-  { label: "Parrtial pre-rendering", href: "/node-streaming", x: "38%" },
+  { label: "Partial prerendering", href: "/node-streaming", x: "38%" },
   { label: "Node.js", href: "/node", x: "0%" },
 ];
 
