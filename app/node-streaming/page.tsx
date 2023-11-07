@@ -25,8 +25,6 @@ function DynamicDate() {
   return <>{new Date().toISOString()}</>;
 }
 
-export const runtime = "nodejs";
-
 function NodeVersion() {
   return <>{process.versions.node}</>;
 }
@@ -57,7 +55,13 @@ export default async function Page() {
           </div>
           <div className="info">
             <span>Compute Region</span>
-            <Suspense fallback={<strong>Loading...</strong>}>
+            <Suspense
+              fallback={
+                <span className="region">
+                  <strong>Loading</strong>
+                </span>
+              }
+            >
               {/* @ts-expect-error Async Server Component */}
               <Delay ms={1500}>
                 <Region region={getRegion()} />
