@@ -1,16 +1,20 @@
-import './globals.css';
-import NavigationSwitcher from './nav';
+import "./globals.css";
+import NavigationSwitcher from "./nav";
 
 export const metadata = {
-  title: 'Next.js on the Edge',
-  description: 'HTML, dynamically rendered in a city near you',
+  metadataBase: "https://next-on-the-edge.vercel.app",
+  title: "Next.js on the Edge",
+  description: "HTML, dynamically rendered in a city near you",
   twitter: {
-    card: 'summary_large_image',
-    title: 'Next.js on the Edge',
-    description: 'HTML, dynamically rendered in a city near you',
-    creator: '@nextjs',
+    card: "summary_large_image",
+    title: "Next.js on the Edge",
+    description: "HTML, dynamically rendered in a city near you",
+    creator: "@nextjs",
   },
-  themeColor: '#FFF',
+};
+
+export const viewport = {
+  themeColor: "#FFF",
 };
 
 export default function RootLayout({
