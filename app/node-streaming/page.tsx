@@ -72,7 +72,7 @@ export default async function Page() {
       </main>
 
       <Footer>
-        <Suspense>
+        <Suspense fallback={<p>Loading…</p>}>
           <p>
             Generated at <DynamicDate /> by{" "}
             <a
