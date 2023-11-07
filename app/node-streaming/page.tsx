@@ -22,16 +22,15 @@ async function Delay({
 
 export const runtime = "nodejs";
 
-async function getNodeData() {
-  // `process.versions.node` only exists in the Node.js runtime, naturally
-  const version: string = process.versions.node;
-  const region = process.env.VERCEL_REGION;
+function NodeVersion() {
+  return <>{process.versions.node}</>;
+}
 
-  return { version, region };
+function getRegion() {
+  return process.env.VERCEL_REGION;
 }
 
 export default async function Page() {
-  const { version, region } = await getNodeData();
   const date = new Date().toISOString();
 
   return (
@@ -47,7 +46,9 @@ export default async function Page() {
             <Suspense fallback={<strong>Loading...</strong>}>
               {/* @ts-expect-error Async Server Component */}
               <Delay ms={1000}>
-                <strong>{version}</strong>
+                <strong>
+                  <NodeVersion />
+                </strong>
               </Delay>
             </Suspense>
           </div>
@@ -56,7 +57,7 @@ export default async function Page() {
             <Suspense fallback={<strong>Loading...</strong>}>
               {/* @ts-expect-error Async Server Component */}
               <Delay ms={1500}>
-                <Region region={region} />
+                <Region region={getRegion()} />
               </Delay>
             </Suspense>
           </div>
