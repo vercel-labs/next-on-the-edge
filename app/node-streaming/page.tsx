@@ -31,8 +31,6 @@ function getRegion() {
 }
 
 export default async function Page() {
-  const date = new Date().toISOString();
-
   return (
     <>
       <main>
@@ -65,16 +63,18 @@ export default async function Page() {
       </main>
 
       <Footer>
-        <p>
-          Generated at {date} by{" "}
-          <a
-            href="https://vercel.com/docs/concepts/functions/serverless-functions"
-            target="_blank"
-            rel="noreferrer"
-          >
-            Vercel Serverless Functions
-          </a>
-        </p>
+        <Suspense>
+          <p>
+            Generated at {new Date().toISOString()} by{" "}
+            <a
+              href="https://vercel.com/docs/concepts/functions/serverless-functions"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Vercel Serverless Functions
+            </a>
+          </p>
+        </Suspense>
       </Footer>
     </>
   );
