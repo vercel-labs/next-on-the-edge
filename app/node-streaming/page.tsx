@@ -1,10 +1,11 @@
-import { Suspense } from 'react';
-import { Footer } from '../components/footer';
-import { Region } from '../components/region';
-import { Illustration } from '../components/illustration';
+import { Suspense } from "react";
+import { Footer } from "../components/footer";
+import { Region } from "../components/region";
+import { Illustration } from "../components/illustration";
+import { unstable_noStore } from "next/cache";
 
 function sleep(ms: number) {
-  return new Promise((resolve) => setTimeout(() => resolve(''), ms));
+  return new Promise((resolve) => setTimeout(() => resolve(""), ms));
 }
 
 async function Delay({
@@ -14,12 +15,12 @@ async function Delay({
   children: React.ReactNode;
   ms: number;
 }) {
+  unstable_noStore();
   await sleep(ms);
   return children;
 }
 
-export const runtime = 'nodejs';
-export const dynamic = 'force-dynamic';
+export const runtime = "nodejs";
 
 async function getNodeData() {
   // `process.versions.node` only exists in the Node.js runtime, naturally
@@ -64,7 +65,7 @@ export default async function Page() {
 
       <Footer>
         <p>
-          Generated at {date} by{' '}
+          Generated at {date} by{" "}
           <a
             href="https://vercel.com/docs/concepts/functions/serverless-functions"
             target="_blank"
@@ -91,7 +92,7 @@ function Nodejs(props: React.HTMLAttributes<HTMLOrSVGElement>) {
       <mask
         id="abc"
         style={{
-          maskType: 'luminance',
+          maskType: "luminance",
         }}
         maskUnits="userSpaceOnUse"
         x={0}
@@ -113,7 +114,7 @@ function Nodejs(props: React.HTMLAttributes<HTMLOrSVGElement>) {
       <mask
         id="b"
         style={{
-          maskType: 'luminance',
+          maskType: "luminance",
         }}
         maskUnits="userSpaceOnUse"
         x={2}
@@ -135,7 +136,7 @@ function Nodejs(props: React.HTMLAttributes<HTMLOrSVGElement>) {
       <mask
         id="c"
         style={{
-          maskType: 'luminance',
+          maskType: "luminance",
         }}
         maskUnits="userSpaceOnUse"
         x={4}

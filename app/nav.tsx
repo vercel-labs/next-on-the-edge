@@ -1,15 +1,15 @@
-'use client';
+"use client";
 
-import { motion } from 'framer-motion';
-import { usePathname } from 'next/navigation';
-import Link from 'next/link';
-import clsx from 'clsx';
+import { motion } from "framer-motion";
+import { usePathname } from "next/navigation";
+import Link from "next/link";
+import clsx from "clsx";
 
 const SECTION_DATA = [
-  { label: 'Edge (Streaming)', href: '/', x: '100%' },
-  { label: 'Edge', href: '/edge', x: '62%' },
-  { label: 'Node.js (Streaming)', href: '/node-streaming', x: '38%' },
-  { label: 'Node.js', href: '/node', x: '0%' },
+  { label: "Edge (Streaming)", href: "/", x: "100%" },
+  { label: "Edge", href: "/edge", x: "62%" },
+  { label: "Parrtial pre-rendering", href: "/node-streaming", x: "38%" },
+  { label: "Node.js", href: "/node", x: "0%" },
 ];
 
 export default function NavigationSwitcher() {
@@ -23,12 +23,12 @@ export default function NavigationSwitcher() {
       <Link
         key={section.label}
         href={section.href}
-        className={clsx('nav-link', {
+        className={clsx("nav-link", {
           active: section.href === pathname,
           pending: section.href !== pathname,
         })}
       >
-        <div style={{ position: 'relative', zIndex: 2 }}>{section.label}</div>
+        <div style={{ position: "relative", zIndex: 2 }}>{section.label}</div>
         {section.href === pathname ? (
           <>
             <motion.div
@@ -37,7 +37,7 @@ export default function NavigationSwitcher() {
               layoutId="glow"
               transition={{
                 delay: 0.03,
-                type: 'spring',
+                type: "spring",
                 stiffness: 125,
                 damping: 20,
                 mass: 1,
@@ -49,7 +49,7 @@ export default function NavigationSwitcher() {
               className="nav-pill"
               layoutId="pill"
               transition={{
-                type: 'spring',
+                type: "spring",
                 stiffness: 150,
                 damping: 20,
                 mass: 1,
@@ -66,7 +66,7 @@ export default function NavigationSwitcher() {
         style={
           activeSection
             ? {
-                ['--x' as string]: activeSection.x,
+                ["--x" as string]: activeSection.x,
               }
             : undefined
         }
