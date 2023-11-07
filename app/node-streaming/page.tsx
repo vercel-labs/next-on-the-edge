@@ -20,6 +20,11 @@ async function Delay({
   return children;
 }
 
+function DynamicDate() {
+  unstable_noStore();
+  return <>{new Date().toISOString()}</>;
+}
+
 export const runtime = "nodejs";
 
 function NodeVersion() {
@@ -65,7 +70,7 @@ export default async function Page() {
       <Footer>
         <Suspense>
           <p>
-            Generated at {new Date().toISOString()} by{" "}
+            Generated at <DynamicDate /> by{" "}
             <a
               href="https://vercel.com/docs/concepts/functions/serverless-functions"
               target="_blank"
