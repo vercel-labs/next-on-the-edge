@@ -1,10 +1,11 @@
-import { Suspense } from 'react';
-import { Footer } from '../components/footer';
-import { Region } from '../components/region';
-import { Illustration } from '../components/illustration';
+import { Suspense } from "react";
+import { Footer } from "../components/footer";
+import { Region } from "../components/region";
+import { Illustration } from "../components/illustration";
+import { unstable_noStore } from "next/cache";
 
 function sleep(ms: number) {
-  return new Promise((resolve) => setTimeout(() => resolve(''), ms));
+  return new Promise((resolve) => setTimeout(() => resolve(""), ms));
 }
 
 async function Delay({
@@ -14,25 +15,34 @@ async function Delay({
   children: React.ReactNode;
   ms: number;
 }) {
+  unstable_noStore();
   await sleep(ms);
   return children;
 }
 
-export const runtime = 'nodejs';
-export const dynamic = 'force-dynamic';
+function DynamicDate() {
+  unstable_noStore();
+  return <>{new Date().toISOString()}</>;
+}
 
-async function getNodeData() {
-  // `process.versions.node` only exists in the Node.js runtime, naturally
-  const version: string = process.versions.node;
-  const region = process.env.VERCEL_REGION;
+function NodeVersion() {
+  let longString = "";
+  for (let i = 0; i < 33000; i++) {
+    longString += "a";
+  }
+  return (
+    <>
+      {process.versions.node}
+      <span style={{ display: "none" }}>{longString}</span>
+    </>
+  );
+}
 
-  return { version, region };
+function getRegion() {
+  return process.env.VERCEL_REGION;
 }
 
 export default async function Page() {
-  const { version, region } = await getNodeData();
-  const date = new Date().toISOString();
-
   return (
     <>
       <main>
@@ -45,17 +55,25 @@ export default async function Page() {
             </span>
             <Suspense fallback={<strong>Loading...</strong>}>
               {/* @ts-expect-error Async Server Component */}
-              <Delay ms={1000}>
-                <strong>{version}</strong>
+              <Delay ms={50}>
+                <strong>
+                  <NodeVersion />
+                </strong>
               </Delay>
             </Suspense>
           </div>
           <div className="info">
             <span>Compute Region</span>
-            <Suspense fallback={<strong>Loading...</strong>}>
+            <Suspense
+              fallback={
+                <span className="region">
+                  <strong>Artificially delayed</strong>
+                </span>
+              }
+            >
               {/* @ts-expect-error Async Server Component */}
-              <Delay ms={1500}>
-                <Region region={region} />
+              <Delay ms={3000}>
+                <Region region={getRegion()} />
               </Delay>
             </Suspense>
           </div>
@@ -63,16 +81,18 @@ export default async function Page() {
       </main>
 
       <Footer>
-        <p>
-          Generated at {date} by{' '}
-          <a
-            href="https://vercel.com/docs/concepts/functions/serverless-functions"
-            target="_blank"
-            rel="noreferrer"
-          >
-            Vercel Serverless Functions
-          </a>
-        </p>
+        <Suspense fallback={<p>Loading…</p>}>
+          <p>
+            Generated at <DynamicDate /> by{" "}
+            <a
+              href="https://vercel.com/docs/concepts/functions/serverless-functions"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Vercel Serverless Functions
+            </a>
+          </p>
+        </Suspense>
       </Footer>
     </>
   );
@@ -91,7 +111,7 @@ function Nodejs(props: React.HTMLAttributes<HTMLOrSVGElement>) {
       <mask
         id="abc"
         style={{
-          maskType: 'luminance',
+          maskType: "luminance",
         }}
         maskUnits="userSpaceOnUse"
         x={0}
@@ -113,7 +133,7 @@ function Nodejs(props: React.HTMLAttributes<HTMLOrSVGElement>) {
       <mask
         id="b"
         style={{
-          maskType: 'luminance',
+          maskType: "luminance",
         }}
         maskUnits="userSpaceOnUse"
         x={2}
@@ -135,7 +155,7 @@ function Nodejs(props: React.HTMLAttributes<HTMLOrSVGElement>) {
       <mask
         id="c"
         style={{
-          maskType: 'luminance',
+          maskType: "luminance",
         }}
         maskUnits="userSpaceOnUse"
         x={4}
